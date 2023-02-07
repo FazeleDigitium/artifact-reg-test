@@ -1,5 +1,15 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/my-image', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/my-image']
+  - name: 'gcr.io/cloud-builders/pip'
+    args: ['install', '--upgrade', 'pip']
+
+  - name: 'gcr.io/cloud-builders/pip'
+    args: ['install', '-r', 'requirements.txt']
+
+  - name: 'gcr.io/cloud-builders/pip'
+    args: ['wheel', '.', '--wheel-dir=build']
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'build/*.whl', 'gs://python-packages-89q34hae/test']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['artifacts', 'python', 'upload', '--location', 'us-central1', 'gs://python-packages-89q34hae/test/*.whl']

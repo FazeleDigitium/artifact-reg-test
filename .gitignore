@@ -1,3 +1,5 @@
 .python-version
 env/
 .idea/
+build
+mypackage.egg-info
