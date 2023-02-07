@@ -7,7 +7,8 @@ steps:
     entrypoint: python
     args: ["-m", "pip", "install", "-r", "requirements.txt"]
 
-  - name: 'gcr.io/cloud-builders/pip'
+  - name: python
+    entrypoint: python
     args: ['wheel', '.', '--wheel-dir=build']
 
   - name: 'gcr.io/cloud-builders/gsutil'
