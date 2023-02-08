@@ -18,5 +18,12 @@ steps:
       - |
         gsutil -m cp -r 'build/*.whl' 'gs://python-packages-89q34hae/test'
 
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['artifacts', 'python', 'upload', '--location', 'us-central1', 'gs://python-packages-89q34hae/test/*.whl']
+  - name: python
+    entrypoint: python
+    args:
+      - '-m'
+      - 'twine'
+      - 'upload'
+      - '--repository-url'
+      - 'us-central1'
+      - 'gs://python-packages-89q34hae/test/*.whl'
