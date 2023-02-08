@@ -9,7 +9,7 @@ steps:
 
   - name: python
     entrypoint: python
-    args: ['wheel', '.', '--wheel-dir=build']
+    args: ["-m", "pip", 'wheel', '.', '--wheel-dir=build']
 
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['cp', 'build/*.whl', 'gs://python-packages-89q34hae/test']
