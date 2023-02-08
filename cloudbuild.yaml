@@ -12,7 +12,11 @@ steps:
     args: ["-m", "pip", 'wheel', '.', '--wheel-dir=build']
 
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'build/*.whl', 'gs://python-packages-89q34hae/test']
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gsutil -m cp -r 'build/*.whl' 'gs://python-packages-89q34hae/test'
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['artifacts', 'python', 'upload', '--location', 'us-central1', 'gs://python-packages-89q34hae/test/*.whl']
