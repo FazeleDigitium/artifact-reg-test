@@ -25,5 +25,4 @@ steps:
       - 'twine'
       - 'upload'
       - '--repository-url'
-      - 'us-central1'
       - 'gs://python-packages-89q34hae/test/*.whl'
