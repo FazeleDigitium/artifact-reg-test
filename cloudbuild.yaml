@@ -26,4 +26,3 @@ steps:
       - 'upload'
       - '--repository-url'
       - "https://europe-west3-python.pkg.dev/skadi-375212/test-insert-row-function"
-      - 'dist/*'
