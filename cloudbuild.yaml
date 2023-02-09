@@ -25,5 +25,5 @@ steps:
       - 'twine'
       - 'upload'
       - '--repository-url'
-      - 'gs://python-packages-89q34hae/test/*.whl'
+      - "https://europe-west3-python.pkg.dev/skadi-375212/test-insert-row-function"
       - 'dist/*'
